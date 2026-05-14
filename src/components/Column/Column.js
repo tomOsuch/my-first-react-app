@@ -1,7 +1,12 @@
 import styles from './Column.module.scss';
 import Card from '../Card/Card';
 import CardForm from '../CardForm/CardForm';
-const Column = ({ id, title, icon, cards, addCard }) => {
+import { useSelector } from 'react-redux';
+
+const Column = ({ id, title, icon, addCard }) => {
+
+  const cards = useSelector(state => state.cards.filter(card => card.columnId === id));
+
 
   return (
     <article className={styles.column}>
